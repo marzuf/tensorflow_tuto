@@ -117,4 +117,21 @@ with tf.Session() as sess:
     y_pred = np.argmax(Z, axis=1)
     # -> if you want probabilities, apply softmax() to the logits
     
+# fine-tuning hyperparams:
+# can use randomized search (better than grid search)
+# there are tools like Oscar which implements algorithms that help finding the best set of hyperparameters
     
+# Nbr of layers: try increase # until start overfitting
+# Nbr of neurons: common practice: funnel -> use fewer and fewer neurons at each layer
+# rationale: many low-level features can coalesce into far fewer high-level features
+# but can also use same # in all layers
+# as for the layers, increase # of neurons until start overfitting
+
+# or pick a model with more layers and neurons than needed and use early stopping to prevent overfitting (and other regularization techniques, i.a. dropout)
+
+# Activation function of hidden layers: use of ReLU
+# -> faster to compute
+# -> GD does not get stuck that much on plateaus: does not saturate for large input values (as opposed to logistic or tanh)
+# Activation function of output layer
+# -> for classification: softmax (when classes are mutually exclusive)
+# -> for regression: no activation function at all
